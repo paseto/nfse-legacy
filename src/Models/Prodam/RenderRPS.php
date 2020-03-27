@@ -352,7 +352,7 @@ class RenderRPS
             'Discriminação do serviço',
             false
         );
-	 self::$dom->addChild(
+        self::$dom->addChild(
             $root,
             'ValorCargaTributaria',
             $rps->valorCargaTributariaRPS,

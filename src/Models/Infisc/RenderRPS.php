@@ -203,7 +203,7 @@ class RenderRPS
             'Site',
             false
         );
-        
+
         $endereco = self::$dom->createElement('end');
         self::$dom->addChild(
             $endereco,
@@ -288,7 +288,7 @@ class RenderRPS
 
         self::$dom->appChild($prestador, $endereco, 'Adicionando tag Endereco do Prestador');
         //Fim endereço
-        
+
         self::$dom->addChild(
             $prestador,
             'fone',
@@ -436,6 +436,39 @@ class RenderRPS
 
         self::$dom->appChild($tomador, $ender, 'Adicionando tag Endereco do Prestador');
         //Fim endereço tomador
+
+        self::$dom->addChild(
+            $tomador,
+            'xEmail',
+            $rps->TomS->xEmail,
+            false,
+            'Email',
+            false
+        );
+        self::$dom->addChild(
+            $tomador,
+            'IE',
+            $rps->TomS->IE,
+            true,
+            'Inscrição Estadual',
+            false
+        );
+        self::$dom->addChild(
+            $tomador,
+            'IM',
+            $rps->TomS->IM,
+            true,
+            'Inscrição Municipal',
+            false
+        );
+        self::$dom->addChild(
+            $tomador,
+            'fone',
+            $rps->TomS->fone,
+            false,
+            'Fone',
+            false
+        );
         self::$dom->appChild($infRPS, $tomador, 'Adicionando tag Tomador em infRPS');
 
         //Transportadora
@@ -881,6 +914,22 @@ class RenderRPS
             'Valor Total Liquido',
             false
         );
+        self::$dom->addChild(
+            $total,
+            'totalAproxTrib',
+            $rps->total->totalAproxTrib,
+            true,
+            'Valor aproximado total dos tributos',
+            false
+        );
+        self::$dom->addChild(
+            $total,
+            'vtLiqFaturas',
+            $rps->total->vtLiqFaturas,
+            true,
+            'Valor líquido total das faturas ',
+            false
+        );
         //Serviço da NFS-e
         $ISS = self::$dom->createElement('ISS');
         self::$dom->addChild(
@@ -915,10 +964,10 @@ class RenderRPS
             'Valor total ISS ST ',
             false
         );
-        
+
         self::$dom->appChild($total, $ISS, 'Adicionando tag ISS');
         self::$dom->appChild($infRPS, $total, 'Adicionando tag Total em infRPS');
-        
+
         //Faturas
         $faturas = self::$dom->createElement('faturas');
         foreach ($rps->fat as $fatura) {
@@ -958,7 +1007,7 @@ class RenderRPS
             self::$dom->appChild($faturas, $fat, 'Adicionando tag fat em faturas');
         }
         self::$dom->appChild($infRPS, $faturas, 'Adicionando tag fatura em infRPS');
-        
+
         //Informações adicionais
         self::$dom->addChild(
             $infRPS,

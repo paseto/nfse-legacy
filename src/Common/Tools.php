@@ -148,7 +148,6 @@ abstract class Tools
         if (empty($this->versao)) {
             throw new \LogicException('Informe a versão do modelo.');
         }
-
     }
 
     /**

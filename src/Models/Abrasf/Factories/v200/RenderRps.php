@@ -53,7 +53,6 @@ class RenderRps extends RenderRPSBase
             false,
             1,
             false
-
         );
 
         $xmlSigned = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $xmlSigned);
@@ -436,8 +435,11 @@ class RenderRps extends RenderRPSBase
                         false
                     );
                 }
-                self::$dom->appChild($identificacaoTomador, $cpfCnpjTomador,
-                    'Adicionando tag CpfCnpj em IdentificacaTomador');
+                self::$dom->appChild(
+                    $identificacaoTomador,
+                    $cpfCnpjTomador,
+                    'Adicionando tag CpfCnpj em IdentificacaTomador'
+                );
 
 
                 //Inscrição Municipal
@@ -449,9 +451,11 @@ class RenderRps extends RenderRPSBase
                     'InscricaoMunicipal',
                     false
                 );
-                self::$dom->appChild($tomador, $identificacaoTomador,
-                    'Adicionando tag IdentificacaoTomador em Tomador');
-
+                self::$dom->appChild(
+                    $tomador,
+                    $identificacaoTomador,
+                    'Adicionando tag IdentificacaoTomador em Tomador'
+                );
             }
 
             //Razao Social
@@ -524,7 +528,6 @@ class RenderRps extends RenderRPSBase
                     false
                 );
                 self::$dom->appChild($tomador, $endereco, 'Adicionando tag Endereco em Tomador');
-
             }
 
             //Contato

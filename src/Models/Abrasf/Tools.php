@@ -19,7 +19,6 @@ namespace NFePHP\NFSe\Models\Abrasf;
 use NFePHP\NFSe\Common\Tools as ToolsBase;
 use NFePHP\NFSe\Models\Abrasf\Factories;
 
-
 class Tools extends ToolsBase
 {
     protected $xmlns = 'http://www.abrasf.org.br/nfse.xsd';
@@ -54,7 +53,6 @@ class Tools extends ToolsBase
         $fact->setXmlns($this->xmlns);
         $message = $fact->render($this->remetenteCNPJCPF, $this->remetenteIM, $protocolo);
         return $this->sendRequest($url, $message);
-
     }
 
     /**
@@ -241,7 +239,6 @@ class Tools extends ToolsBase
         // echo $message;
         // exit;
         return $this->sendRequest($url, $message);
-
     }
 
     public function recepcionarLoteRpsSincrono()

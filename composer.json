@@ -1,22 +1,10 @@
 {
-    "name": "nfephp-org/sped-nfse",
+    "name": "paseto/nfse-legacy",
     "type": "library",
     "description": "API para geração e comunicação da NFSe com as Prefeituras.",
     "keywords": ["nfse", "sped", "nfephp"],
-    "homepage": "https://github.com/nfephp-org/sped-nfse",
+    "homepage": "https://github.com/paseto/nfse-legacy",
     "license": ["GPL-3.0+","LGPL-3.0+", "MIT"],
-    "authors": [
-        {
-            "name": "Roberto L. Machado",
-            "email": "linux.rlm@gmail.com",
-            "homepage": "http://www.nfephp.org",
-            "role": "Developer"
-        },
-        {
-            "name": "Comunidade NFePHP",
-            "homepage": "https://github.com/nfephp-org/sped-nfse/graphs/contributors"
-        }
-    ],
     "require": {
         "php" : "~5.6|~7.0",
         "nfephp-org/sped-common" : "^5.0"

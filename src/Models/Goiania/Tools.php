@@ -54,7 +54,6 @@ class Tools extends ToolsAbrasft
         $class = "NFePHP\\NFSe\\Models\\Goiania\\Factories\\v{$this->versao}\\GerarNfse";
         $fact = new $class($this->certificate);
         return $this->gerarNfseCommon($fact, $rps);
-
     }
 
     protected function makeRequest($message)

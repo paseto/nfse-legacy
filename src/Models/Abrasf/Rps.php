@@ -22,7 +22,6 @@ use InvalidArgumentException;
 use NFePHP\NFSe\Common\Rps as RpsBase;
 use Respect\Validation\Validator;
 
-
 class Rps extends RpsBase
 {
     const TIPO_RPS = 1;

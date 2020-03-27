@@ -6,7 +6,6 @@ use NFePHP\Common\DOMImproved as Dom;
 use NFePHP\NFSe\Models\Abrasf\Factories\RecepcionarLoteRps as RecepcionarLoteRpsBase;
 use NFePHP\NFSe\Models\Abrasf\Factories\Signer;
 
-
 class RecepcionarLoteRps extends RecepcionarLoteRpsBase
 {
     /**

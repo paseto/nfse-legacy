@@ -61,7 +61,6 @@ class RenderRps extends RenderRPSBase
             false,
             1,
             false
-
         );
 
         $xmlSigned = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $xmlSigned);
@@ -425,8 +424,11 @@ class RenderRps extends RenderRPSBase
                         false
                     );
                 }
-                self::$dom->appChild($identificacaoTomador, $cpfCnpjTomador,
-                    'Adicionando tag CpfCnpj em IdentificacaTomador');
+                self::$dom->appChild(
+                    $identificacaoTomador,
+                    $cpfCnpjTomador,
+                    'Adicionando tag CpfCnpj em IdentificacaTomador'
+                );
 
                 //Inscrição Municipal
                 self::$dom->addChild(
@@ -437,9 +439,11 @@ class RenderRps extends RenderRPSBase
                     'InscricaoMunicipal',
                     false
                 );
-                self::$dom->appChild($tomador, $identificacaoTomador,
-                    'Adicionando tag IdentificacaoTomador em Tomador');
-
+                self::$dom->appChild(
+                    $tomador,
+                    $identificacaoTomador,
+                    'Adicionando tag IdentificacaoTomador em Tomador'
+                );
             }
 
             //Razão Social
@@ -536,7 +540,6 @@ class RenderRps extends RenderRPSBase
                 self::$dom->appChild($tomador, $contato, 'Adicionando tag Contato em Tomador');
             }
             self::$dom->appChild($infRPS, $tomador, 'Adicionando tag Tomador em infRPS');
-
         }
         /** Fim Tomador **/
 

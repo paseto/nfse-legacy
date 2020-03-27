@@ -66,7 +66,6 @@ class Response extends ResponseBase
     {
         $return = array();
         switch ($documentElement->nodeType) {
-
             case XML_CDATA_SECTION_NODE:
                 $return = trim($documentElement->textContent);
                 break;

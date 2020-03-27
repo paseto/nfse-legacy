@@ -28,7 +28,7 @@ class Response extends ResponseAbrasf
      */
     public function read($response)
     {
-        $response = str_replace('<?xml version="1.0"?>','',$response);
+        $response = str_replace('<?xml version="1.0"?>', '', $response);
         $data = parent::read($response);
         $data = reset($data);
         $data = reset($data);
