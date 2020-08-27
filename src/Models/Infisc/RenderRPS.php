@@ -820,7 +820,7 @@ class RenderRPS
             self::$dom->addChild(
                 $serv,
                 'totalAproxTribServ',
-                number_format($rps->serv[$d->nItem]->totalAproxTribServ, 2),
+                number_format($rps->serv[$d->nItem]->totalAproxTribServ, 2, '.', ''),
                 false,
                 '',
                 false
