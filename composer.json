@@ -6,7 +6,7 @@
     "homepage": "https://github.com/paseto/nfse-legacy",
     "license": ["GPL-3.0+","LGPL-3.0+", "MIT"],
     "require": {
-        "php" : "~5.6|~7.0",
+        "php" : "^7.0",
         "nfephp-org/sped-common" : "^5.0"
     },
     "require-dev": {
@@ -17,7 +17,7 @@
     "autoload": {
         "psr-4": {
           "NFePHP\\NFSe\\": "src/"
-        } 
+        }
     },
     "autoload-dev": {
         "psr-4": {
