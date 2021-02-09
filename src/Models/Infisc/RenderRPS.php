@@ -935,7 +935,7 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vBCISS',
-            number_format($rps->totalvBCISS, 2),
+            number_format($rps->totalvBCISS, 2, '.', ''),
             false,
             'Valor total da base cálculo ISSQN',
             false
