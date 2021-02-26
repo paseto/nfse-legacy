@@ -683,7 +683,7 @@ class RenderRPS
             self::$dom->addChild(
                 $serv,
                 'vISS',
-                $rps->serv[$d->nItem]->vISS,
+                number_format($rps->serv[$d->nItem]->vISS, 2),
                 false,
                 'Valor iss',
                 false
