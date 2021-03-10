@@ -683,7 +683,7 @@ class RenderRPS
             self::$dom->addChild(
                 $serv,
                 'vISS',
-                number_format($rps->serv[$d->nItem]->vISS, 2),
+                number_format($rps->serv[$d->nItem]->vISS, 2, '.', ''),
                 false,
                 'Valor iss',
                 false
@@ -943,7 +943,7 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vISS',
-            number_format($rps->totalvISS, 2),
+            number_format($rps->totalvISS, 2, '.', ''),
             false,
             'Valor total ISS',
             false
