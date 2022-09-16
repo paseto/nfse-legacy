@@ -570,6 +570,11 @@ class RenderRPS
         $rps->totalvBCISS = 0;
         $rps->totalvSTISS = 0;
         $rps->totalvBCSTISS = 0;
+        $rps->totalvRetIR = 0;
+        $rps->totalvRetPISPASEP = 0;
+        $rps->totalvRetCOFINS = 0;
+        $rps->totalvRetCSLL = 0;
+        $rps->totalvRetINSS = 0;
         foreach ($rps->det as $d) {
             $det = self::$dom->createElement('det');
             self::$dom->addChild(
@@ -683,7 +688,7 @@ class RenderRPS
             self::$dom->addChild(
                 $serv,
                 'vISS',
-                number_format($rps->serv[$d->nItem]->vISS, 2, '.', ''),
+                ($rps->serv[$d->nItem]->vISS)?number_format($rps->serv[$d->nItem]->vISS, 2, '.', ''):null,
                 false,
                 'Valor iss',
                 false
@@ -713,6 +718,7 @@ class RenderRPS
                 'Retenção INSS',
                 false
             );
+            $rps->totalvRetINSS += $rps->serv[$d->nItem]->vRetINSS;
             self::$dom->addChild(
                 $serv,
                 'vRed',
@@ -745,6 +751,9 @@ class RenderRPS
                 '',
                 false
             );
+            $rps->totalvRetIR += $rps->serv[$d->nItem]->vRetIR;
+
+            $rps->totalvBCSTISS += $rps->ISSST[$d->nItem]->vBCST;
             self::$dom->addChild(
                 $serv,
                 'vBCCOFINS',
@@ -764,11 +773,12 @@ class RenderRPS
             self::$dom->addChild(
                 $serv,
                 'vRetCOFINS',
-                $rps->serv[$d->nItem]->pRetCOFINS,
+                $rps->serv[$d->nItem]->vRetCOFINS,
                 false,
                 '',
                 false
             );
+            $rps->totalvRetCOFINS += $rps->serv[$d->nItem]->vRetCOFINS;
             self::$dom->addChild(
                 $serv,
                 'vBCCSLL',
@@ -793,6 +803,8 @@ class RenderRPS
                 '',
                 false
             );
+            $rps->totalvRetCSLL += $rps->serv[$d->nItem]->vRetCSLL;
+
             self::$dom->addChild(
                 $serv,
                 'vBCPISPASEP',
@@ -817,6 +829,8 @@ class RenderRPS
                 '',
                 false
             );
+            $rps->totalvRetPISPASEP += $rps->serv[$d->nItem]->vRetPISPASEP;
+
             self::$dom->addChild(
                 $serv,
                 'totalAproxTribServ',
@@ -922,6 +936,52 @@ class RenderRPS
             'Valor aproximado total dos tributos',
             false
         );
+
+        //Representa informações de retenções fiscais em uma NFS-e
+        $Ret = self::$dom->createElement('Ret');
+        self::$dom->addChild(
+            $Ret,
+            'vRetIR',
+            number_format($rps->totalvRetIR, 2, '.', ''),
+            false,
+            'Valor da retenção de IR.',
+            false
+        );
+        self::$dom->addChild(
+            $Ret,
+            'vRetPISPASEP',
+            number_format($rps->totalvRetPISPASEP, 2, '.', ''),
+            false,
+            'Valor da retenção de PIS-PASEP',
+            false
+        );
+        self::$dom->addChild(
+            $Ret,
+            'vRetCOFINS',
+            number_format($rps->totalvRetCOFINS, 2, '.', ''),
+            false,
+            'Valor da retenção de COFINS.',
+            false
+        );
+        self::$dom->addChild(
+            $Ret,
+            'vRetCSLL',
+            number_format($rps->totalvRetCSLL, 2),
+            false,
+            'Valor CSLL',
+            false
+        );
+        self::$dom->addChild(
+            $Ret,
+            'vRetINSS',
+            number_format($rps->totalvRetINSS, 2),
+            false,
+            'Valor da retenção de INSS',
+            false
+        );
+
+        self::$dom->appChild($total, $Ret, 'Adicionando tag Ret');
+
         self::$dom->addChild(
             $total,
             'vtLiqFaturas',
@@ -935,7 +995,7 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vBCISS',
-            number_format($rps->totalvBCISS, 2, '.', ''),
+            ($rps->totalvBCISS)?number_format($rps->totalvBCISS, 2, '.', ''):null,
             false,
             'Valor total da base cálculo ISSQN',
             false
@@ -943,7 +1003,7 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vISS',
-            number_format($rps->totalvISS, 2, '.', ''),
+            ($rps->totalvISS)?number_format($rps->totalvISS, 2, '.', ''):null,
             false,
             'Valor total ISS',
             false
@@ -966,6 +1026,7 @@ class RenderRPS
         );
 
         self::$dom->appChild($total, $ISS, 'Adicionando tag ISS');
+
         self::$dom->appChild($infRPS, $total, 'Adicionando tag Total em infRPS');
 
         //Faturas
