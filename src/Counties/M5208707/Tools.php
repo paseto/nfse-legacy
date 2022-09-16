@@ -26,7 +26,8 @@ class Tools extends ToolsModel
      * @var array
      */
 
-    //O ambiente de produção e homologação são o mesmo, onde deve-se solicitar alteração na prefeitura de Goiânia para entrar/sair do modo TESTE
+    //O ambiente de produção e homologação são o mesmo, onde deve-se solicitar alteração na prefeitura de Goiânia para
+    // entrar/sair do modo TESTE
     protected $url = [
         1 => 'https://nfse.goiania.go.gov.br/ws/nfse.asmx',
         2 => 'https://nfse.goiania.go.gov.br/ws/nfse.asmx'

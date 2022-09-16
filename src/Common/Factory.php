@@ -100,12 +100,14 @@ class Factory
     public function validar($versao, $body, $model, $method = '', $suffix = 'v', $cmun = null)
     {
         $ver = str_pad($versao, 2, '0', STR_PAD_LEFT);
-        $cmunPath = $this->pathSchemes . DIRECTORY_SEPARATOR . 'Counties' . DIRECTORY_SEPARATOR . "M{$cmun}" . DIRECTORY_SEPARATOR;
+        $cmunPath = $this->pathSchemes . DIRECTORY_SEPARATOR . 'Counties' . DIRECTORY_SEPARATOR . "M{$cmun}" .
+                    DIRECTORY_SEPARATOR;
 
         if ($cmun && is_dir($cmunPath)) {
             $path = $cmunPath;
         } else {
-            $path = $this->pathSchemes . DIRECTORY_SEPARATOR . 'Models' . DIRECTORY_SEPARATOR . $model . DIRECTORY_SEPARATOR;
+            $path = $this->pathSchemes . DIRECTORY_SEPARATOR . 'Models' . DIRECTORY_SEPARATOR . $model .
+                    DIRECTORY_SEPARATOR;
         }
 
         $schema = $path . "v$ver" . DIRECTORY_SEPARATOR . $method . ".xsd";
