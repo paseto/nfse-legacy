@@ -688,7 +688,7 @@ class RenderRPS
             self::$dom->addChild(
                 $serv,
                 'vISS',
-                ($rps->serv[$d->nItem]->vISS)?number_format($rps->serv[$d->nItem]->vISS, 2, '.', ''):null,
+                ($rps->serv[$d->nItem]->vISS) ? number_format($rps->serv[$d->nItem]->vISS, 2, '.', '') : null,
                 false,
                 'Valor iss',
                 false
@@ -713,7 +713,7 @@ class RenderRPS
             self::$dom->addChild(
                 $serv,
                 'vRetINSS',
-                $rps->serv[$d->nItem]->vRetINSS,
+                ($rps->serv[$d->nItem]->vRetINSS) ? number_format($rps->serv[$d->nItem]->vRetINSS, 2) : null,
                 false,
                 'Retenção INSS',
                 false
@@ -753,7 +753,7 @@ class RenderRPS
             );
             $rps->totalvRetIR += $rps->serv[$d->nItem]->vRetIR;
 
-            $rps->totalvBCSTISS += $rps->ISSST[$d->nItem]->vBCST;
+//            $rps->totalvBCSTISS += $rps->ISSST[$d->nItem]->vBCST;
             self::$dom->addChild(
                 $serv,
                 'vBCCOFINS',
@@ -995,7 +995,7 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vBCISS',
-            ($rps->totalvBCISS)?number_format($rps->totalvBCISS, 2, '.', ''):null,
+            ($rps->totalvBCISS) ? number_format($rps->totalvBCISS, 2, '.', '') : null,
             false,
             'Valor total da base cálculo ISSQN',
             false
@@ -1003,7 +1003,7 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vISS',
-            ($rps->totalvISS)?number_format($rps->totalvISS, 2, '.', ''):null,
+            ($rps->totalvISS) ? number_format($rps->totalvISS, 2, '.', '') : null,
             false,
             'Valor total ISS',
             false
