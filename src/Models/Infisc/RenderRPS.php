@@ -697,7 +697,9 @@ class RenderRPS
             self::$dom->addChild(
                 $serv,
                 'vBCINSS',
-                $rps->serv[$d->nItem]->vBCINSS,
+                ($rps->serv[$d->nItem]->vBCINSS)
+                    ? number_format($rps->serv[$d->nItem]->vBCINSS, 2, '.', '')
+                    : null,
                 false,
                 'Base INSS',
                 false
