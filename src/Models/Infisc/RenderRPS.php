@@ -715,7 +715,7 @@ class RenderRPS
             self::$dom->addChild(
                 $serv,
                 'vRetINSS',
-                ($rps->serv[$d->nItem]->vRetINSS) ? number_format($rps->serv[$d->nItem]->vRetINSS, 2) : null,
+                ($rps->serv[$d->nItem]->vRetINSS) ? number_format($rps->serv[$d->nItem]->vRetINSS, 2, '.', '') : null,
                 false,
                 'Retenção INSS',
                 false
@@ -976,7 +976,7 @@ class RenderRPS
         self::$dom->addChild(
             $Ret,
             'vRetINSS',
-            number_format($rps->totalvRetINSS, 2),
+            number_format($rps->totalvRetINSS, 2, '.', ''),
             false,
             'Valor da retenção de INSS',
             false
