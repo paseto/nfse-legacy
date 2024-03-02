@@ -12,3 +12,6 @@ certs/*.pfx
 certs/*.pem
 config/*.json
 composer.lock
+examples/Betha/testaGerarNfseRps.php
+examples/Betha/testaConsultarNfsePorFaixa.php
+examples/Betha/testaCancelarNfse.php

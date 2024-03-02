@@ -30,14 +30,13 @@ $arr = [
 ];
 $configJson = json_encode($arr);
 $contentpfx = file_get_contents('../../certs/certificado.pfx');
-
 try {
 
     $nfse = new NFSe($configJson, Certificate::readPfx($contentpfx, '123456'));
     //Por ora apenas o SoapCurl funciona com IssNet
     $nfse->tools->loadSoapClass(new SoapCurl());
-    //caso o mode debug seja ativado serão salvos em arquivos 
-    //a requisicção SOAP e a resposta do webservice na pasta de 
+    //caso o mode debug seja ativado serão salvos em arquivos
+    //a requisicção SOAP e a resposta do webservice na pasta de
     //arquivos temporarios do SO em sub pasta denominada "soap"
     $nfse->tools->setDebugSoapMode(true);
 
@@ -120,7 +119,7 @@ try {
     $i = 1;
     while ($i < 3) {
         $det = new stdClass();
-        $det->nItem = $i;        
+        $det->nItem = $i;
 
         //Serviço da NFS-e
         $serv = new stdClass();
@@ -174,7 +173,7 @@ try {
     $ISS->vBCISS = '100.00';
     $ISS->vISS = '4.00';
     $rps->ISS = $ISS;
-    
+
     //Informações Adicionais
     $rps->infAdicLT = '4321122';
     $rps->infAdic[] = 'Informação 1';
@@ -187,14 +186,14 @@ try {
 //    header('Content-type: text/xml; charset=UTF-8');
 //    print_r($content);
 //    exit();
-//    
+//
     //envio do RPS
     $response = $nfse->tools->envioLote([$nfse->rps]);
 
     //Converte em objeto
     $return = $nfse->response->readReturn('return', $response);
 
-    //Lote recebido    
+    //Lote recebido
     if ($return->confirmaLote->sit == 100) {
         echo "Lote: " . $return->confirmaLote->cLote . "<br/>";
         echo "Situação: " . $return->confirmaLote->sit . "<br/>";
@@ -211,4 +210,4 @@ try {
     echo $e->getMessage();
 } catch (Exception $e) {
     echo $e->getMessage();
-}    
+}

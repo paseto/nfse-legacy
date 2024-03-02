@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Betha\Factories\v202;
+namespace NFePHP\NFSe\Models\Abrasf\Factories\v100;
 
 use NFePHP\Common\DOMImproved as Dom;
 use NFePHP\NFSe\Models\Abrasf\Factories\RecepcionarLoteRps as RecepcionarLoteRpsBase;
@@ -30,6 +30,7 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         $xsd = "nfse_v{$versao}";
         $qtdRps = count($rpss);
 
+
         $dom = new Dom('1.0', 'utf-8');
         $dom->formatOutput = false;
         //Cria o elemento pai
@@ -40,8 +41,7 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         $dom->appendChild($root);
 
         $loteRps = $dom->createElement('LoteRps');
-        $loteRps->setAttribute('Id', "lote{$lote}");
-        $loteRps->setAttribute('versao', '2.02');
+        $loteRps->setAttribute('id', "Lote{$lote}");
 
         $dom->appChild($root, $loteRps, 'Adicionando tag LoteRps a EnviarLoteRpsEnvio');
 
@@ -56,30 +56,22 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         );
 
         /* CPF CNPJ */
-        $cpfCnpj = $dom->createElement('CpfCnpj');
-
-        if ($remetenteTipoDoc == '2') {
-            $tag = 'Cnpj';
-        } else {
-            $tag = 'Cpf';
-        }
         //Adiciona o Cpf/Cnpj na tag CpfCnpj
         $dom->addChild(
-            $cpfCnpj,
-            $tag,
+            $loteRps,
+            'Cnpj',
             $remetenteCNPJCPF,
             true,
             "Cpf / Cnpj",
             true
         );
-        $dom->appChild($loteRps, $cpfCnpj, 'Adicionando tag CpfCnpj ao Prestador');
 
         /* Inscrição Municipal */
         $dom->addChild(
             $loteRps,
             'InscricaoMunicipal',
             $inscricaoMunicipal,
-            false,
+            true,
             "Inscricao Municipal",
             false
         );
@@ -110,14 +102,15 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
             $this->certificate,
             $xml,
             'LoteRps',
-            'Id',
+            'id',
             $this->algorithm,
             [false, false, null, null],
             '',
             true
         );
         $body = $this->clear($body);
-        $this->validar($versao, $body, $this->schemeFolder, $xsd, '');
+        
+        $this->validar($versao, $body, $this->schemeFolder, $xsd, '', $this->cmun);
 
         return $body;
     }

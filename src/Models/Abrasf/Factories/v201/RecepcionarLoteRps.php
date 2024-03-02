@@ -1,10 +1,11 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Betha\Factories\v202;
+namespace NFePHP\NFSe\Models\Abrasf\Factories\v201;
 
 use NFePHP\Common\DOMImproved as Dom;
 use NFePHP\NFSe\Models\Abrasf\Factories\RecepcionarLoteRps as RecepcionarLoteRpsBase;
 use NFePHP\NFSe\Models\Abrasf\Factories\Signer;
+use NFePHP\NFSe\Models\Abrasf\Factories\v202\RenderRps;
 
 class RecepcionarLoteRps extends RecepcionarLoteRpsBase
 {
@@ -30,6 +31,7 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         $xsd = "nfse_v{$versao}";
         $qtdRps = count($rpss);
 
+
         $dom = new Dom('1.0', 'utf-8');
         $dom->formatOutput = false;
         //Cria o elemento pai
@@ -41,7 +43,7 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
 
         $loteRps = $dom->createElement('LoteRps');
         $loteRps->setAttribute('Id', "lote{$lote}");
-        $loteRps->setAttribute('versao', '2.02');
+        $loteRps->setAttribute('versao', '2.01');
 
         $dom->appChild($root, $loteRps, 'Adicionando tag LoteRps a EnviarLoteRpsEnvio');
 

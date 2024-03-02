@@ -6,7 +6,7 @@ use NFePHP\Common\DOMImproved as Dom;
 use NFePHP\NFSe\Models\Abrasf\Factories\RecepcionarLoteRps as RecepcionarLoteRpsBase;
 use NFePHP\NFSe\Models\Abrasf\Factories\Signer;
 
-class RecepcionarLoteRps extends RecepcionarLoteRpsBase
+class RecepcionarLoteRpsSincrono extends RecepcionarLoteRpsBase
 {
     /**
      * Método usado para gerar o XML do Soap Request
@@ -26,14 +26,15 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         $lote,
         $rpss
     ) {
-        $method = 'EnviarLoteRpsEnvio';
+        $method = 'EnviarLoteRpsSincronoEnvio';
         $xsd = "nfse_v{$versao}";
         $qtdRps = count($rpss);
+
 
         $dom = new Dom('1.0', 'utf-8');
         $dom->formatOutput = false;
         //Cria o elemento pai
-        $root = $dom->createElement('EnviarLoteRpsEnvio');
+        $root = $dom->createElement('EnviarLoteRpsSincronoEnvio');
         $root->setAttribute('xmlns', $this->xmlns);
 
         //Adiciona as tags ao DOM

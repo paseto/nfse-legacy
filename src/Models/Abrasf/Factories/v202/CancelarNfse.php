@@ -1,12 +1,12 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Betha\Factories\v202;
+namespace NFePHP\NFSe\Models\Abrasf\Factories\v202;
 
+use NFePHP\NFSe\Models\Abrasf\Factories\CancelarNfse as CancelarNfseBase;
 use NFePHP\Common\DOMImproved as Dom;
-use NFePHP\NFSe\Models\Abrasf\Factories\RecepcionarLoteRps as RecepcionarLoteRpsBase;
 use NFePHP\NFSe\Models\Abrasf\Factories\Signer;
 
-class RecepcionarLoteRps extends RecepcionarLoteRpsBase
+class CancelarNfse extends CancelarNfseBase
 {
     /**
      * Método usado para gerar o XML do Soap Request
@@ -14,8 +14,6 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
      * @param $remetenteTipoDoc
      * @param $remetenteCNPJCPF
      * @param $inscricaoMunicipal
-     * @param $lote
-     * @param $rpss
      * @return string
      */
     public function render(
@@ -23,36 +21,49 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
         $inscricaoMunicipal,
-        $lote,
-        $rpss
+        $nfseNumero
     ) {
-        $method = 'EnviarLoteRpsEnvio';
+        $method = 'CancelarNfseEnvio';
         $xsd = "nfse_v{$versao}";
-        $qtdRps = count($rpss);
 
         $dom = new Dom('1.0', 'utf-8');
         $dom->formatOutput = false;
         //Cria o elemento pai
-        $root = $dom->createElement('EnviarLoteRpsEnvio');
+        $root = $dom->createElement('CancelarNfseEnvio');
         $root->setAttribute('xmlns', $this->xmlns);
 
         //Adiciona as tags ao DOM
         $dom->appendChild($root);
 
-        $loteRps = $dom->createElement('LoteRps');
-        $loteRps->setAttribute('Id', "lote{$lote}");
-        $loteRps->setAttribute('versao', '2.02');
+        $loteRps = $dom->createElement('Pedido');
 
-        $dom->appChild($root, $loteRps, 'Adicionando tag LoteRps a EnviarLoteRpsEnvio');
+        $dom->appChild($root, $loteRps, 'Adicionando tag Pedido');
 
+        $InfPedidoCancelamento = $dom->createElement('InfPedidoCancelamento');
+        $InfPedidoCancelamento->setAttribute('Id', $nfseNumero);
 
-        $dom->addChild(
+        $dom->appChild(
             $loteRps,
-            'NumeroLote',
-            $lote,
-            true,
-            "Numero do lote RPS",
-            true
+            $InfPedidoCancelamento,
+            "Inf Pedido Cancelamento"
+        );
+
+        $identificacaoNfse = $dom->createElement('IdentificacaoNfse');
+
+        $dom->appChild(
+            $InfPedidoCancelamento,
+            $identificacaoNfse,
+            'Identificação da Nfse'
+        );
+
+        /* Inscrição Municipal */
+        $dom->addChild(
+            $identificacaoNfse,
+            'Numero',
+            $nfseNumero,
+            false,
+            "Numero NFse",
+            false
         );
 
         /* CPF CNPJ */
@@ -72,11 +83,11 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
             "Cpf / Cnpj",
             true
         );
-        $dom->appChild($loteRps, $cpfCnpj, 'Adicionando tag CpfCnpj ao Prestador');
+        $dom->appChild($identificacaoNfse, $cpfCnpj, 'Adicionando tag CpfCnpj ao Prestador');
 
         /* Inscrição Municipal */
         $dom->addChild(
-            $loteRps,
+            $identificacaoNfse,
             'InscricaoMunicipal',
             $inscricaoMunicipal,
             false,
@@ -84,24 +95,25 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
             false
         );
 
-        /* Quantidade de RPSs */
+        /* Código do Municipio */
         $dom->addChild(
-            $loteRps,
-            'QuantidadeRps',
-            $qtdRps,
-            true,
-            "Quantidade de Rps",
-            true
+            $identificacaoNfse,
+            'CodigoMunicipio',
+            $this->cmun,
+            false,
+            "Código Municipio",
+            false
         );
 
-        /* Lista de RPS */
-        $listaRps = $dom->createElement('ListaRps');
-        $dom->appChild($loteRps, $listaRps, 'Adicionando tag ListaRps a LoteRps');
-
-        foreach ($rpss as $rps) {
-            RenderRps::appendRps($rps, $this->timezone, $this->certificate, $this->algorithm, $dom, $listaRps);
-        }
-
+        /* Código do Cancelamento */
+        $dom->addChild(
+            $InfPedidoCancelamento,
+            'CodigoCancelamento',
+            2,
+            false,
+            "Código Municipio",
+            false
+        );
 
         //Parse para XML
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $dom->saveXML());
@@ -109,11 +121,11 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         $body = Signer::sign(
             $this->certificate,
             $xml,
-            'LoteRps',
+            'InfPedidoCancelamento',
             'Id',
             $this->algorithm,
             [false, false, null, null],
-            '',
+            'Pedido',
             true
         );
         $body = $this->clear($body);

@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Betha\Factories\v202;
+namespace NFePHP\NFSe\Models\Abrasf\Factories\v202;
 
 use NFePHP\Common\DOMImproved as Dom;
 use NFePHP\NFSe\Models\Abrasf\Factories\RecepcionarLoteRps as RecepcionarLoteRpsBase;
@@ -29,6 +29,7 @@ class RecepcionarLoteRps extends RecepcionarLoteRpsBase
         $method = 'EnviarLoteRpsEnvio';
         $xsd = "nfse_v{$versao}";
         $qtdRps = count($rpss);
+
 
         $dom = new Dom('1.0', 'utf-8');
         $dom->formatOutput = false;
