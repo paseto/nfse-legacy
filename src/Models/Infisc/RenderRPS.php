@@ -1021,7 +1021,7 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vSTISS',
-            number_format($rps->totalvSTISS, 2),
+            number_format($rps->totalvSTISS, 2, '.', ''),
             false,
             'Valor total ISS ST ',
             false

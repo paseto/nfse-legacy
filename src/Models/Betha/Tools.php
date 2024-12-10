@@ -25,7 +25,7 @@ class Tools extends ToolsAbrasft
 {
     protected $xmlns = 'http://www.betha.com.br/e-nota-contribuinte-ws';
     protected $schemeFolder = 'Betha';
-    
+
     /**
      * @param $numero
      * @param $serie
@@ -51,7 +51,7 @@ class Tools extends ToolsAbrasft
         $fact = new $class($this->certificate);
         return $this->consultarLoteRpsCommon($fact, $protocolo);
     }
-    
+
     /**
      * Recepciona lote de forma sincrona
      * @param $lote
