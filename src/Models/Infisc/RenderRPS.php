@@ -471,6 +471,84 @@ class RenderRPS
         );
         self::$dom->appChild($infRPS, $tomador, 'Adicionando tag Tomador em infRPS');
 
+        //Dados da Obra
+        if (isset($rps->dadosDaObra)) {
+            $dadosDaObra = self::$dom->createElement('dadosDaObra');
+            self::$dom->addChild(
+                $dadosDaObra,
+                'xLogObra',
+                $rps->dadosDaObra->xLogObra,
+                true,
+                'Logradouro da Obra',
+                false
+            );
+            self::$dom->addChild(
+                $dadosDaObra,
+                'vNumeroObra',
+                $rps->dadosDaObra->vNumeroObra,
+                true,
+                'Número da Obra',
+                false
+            );
+            self::$dom->addChild(
+                $dadosDaObra,
+                'xBairroObra',
+                $rps->dadosDaObra->xBairroObra,
+                true,
+                'Bairro da Obra',
+                false
+            );
+            self::$dom->addChild(
+                $dadosDaObra,
+                'xCepObra',
+                $rps->dadosDaObra->xCepObra,
+                true,
+                'CEP da Obra',
+                false
+            );
+            self::$dom->addChild(
+                $dadosDaObra,
+                'cCidadeObra',
+                $rps->dadosDaObra->cCidadeObra,
+                true,
+                'Código da Cidade da Obra',
+                false
+            );
+            self::$dom->addChild(
+                $dadosDaObra,
+                'xCidadeObra',
+                $rps->dadosDaObra->xCidadeObra,
+                true,
+                'Cidade da Obra',
+                false
+            );
+            self::$dom->addChild(
+                $dadosDaObra,
+                'xUfObra',
+                $rps->dadosDaObra->xUfObra,
+                true,
+                'UF da Obra',
+                false
+            );
+            self::$dom->addChild(
+                $dadosDaObra,
+                'cPaisObra',
+                $rps->dadosDaObra->cPaisObra,
+                true,
+                'Código do País da Obra',
+                false
+            );
+            self::$dom->addChild(
+                $dadosDaObra,
+                'xPaisObra',
+                $rps->dadosDaObra->xPaisObra,
+                true,
+                'País da Obra',
+                false
+            );
+            self::$dom->appChild($infRPS, $dadosDaObra, 'Adicionando tag Dados da Obra em infRPS');
+        }
+
         //Transportadora
         if (isset($rps->transportadora)) {
             $transportadora = self::$dom->createElement('transportadora');

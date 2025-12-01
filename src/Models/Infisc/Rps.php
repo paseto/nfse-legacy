@@ -28,6 +28,7 @@ class Rps extends RpsBase
     public $Id;
     public $prest;
     public $TomS;
+    public $dadosDaObra;
     public $transportadora;
     public $det = [];
     public $serv = [];
