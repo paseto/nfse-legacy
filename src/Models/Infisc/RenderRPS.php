@@ -160,6 +160,22 @@ class RenderRPS
             "Empreitada Global",
             true
         );
+        self::$dom->addChild(
+            $identificacaoRps,
+            'cLocPrestacao',
+            $rps->Id->cLocPrestacao,
+            true,
+            "Empreitada Global",
+            true
+        );
+        self::$dom->addChild(
+            $identificacaoRps,
+            'cPaisPrestacao',
+            $rps->Id->cPaisPrestacao,
+            true,
+            "Empreitada Global",
+            true
+        );
         self::$dom->appChild($infRPS, $identificacaoRps, 'Adicionando tag IdentificacaoRPS');
 
         $prestador = self::$dom->createElement('prest');

@@ -573,6 +573,10 @@
                  <xs:element name="serierps" type="TSerie" minOccurs="0"  maxOccurs="1"/>
                  <!-- Data de emissao do RPS papel que originou a nota  -->
                  <xs:element name="dataEmissaoRpsPapel" type="TData" minOccurs="0"  maxOccurs="1"/>
+                 <!--  Municipio do local de prestacao  -->
+                 <xs:element maxOccurs="1" minOccurs="0" name="cLocPrestacao" type="TCodMunIBGE"/>
+                 <!--  Municipio do local de prestacao  -->
+                 <xs:element maxOccurs="1" minOccurs="0" name="cPaisPrestacao" type="TcPais"/>
              </xs:sequence>
          </xs:complexType>
       </xs:element>
