@@ -962,6 +962,69 @@ class RenderRPS
 
                 self::$dom->appChild($det, $ISSST, 'Adicionando tag ISSQN retido em um item de serviço da NFS-e');
             }
+
+            //IBSCBS
+            if (isset($rps->IBSCBS[$d->nItem])) {
+                $IBSCBS = self::$dom->createElement('IBSCBS');
+                self::$dom->addChild(
+                    $IBSCBS,
+                    'finNFSe',
+                    $rps->IBSCBS[$d->nItem]->finNFSe,
+                    true,
+                    'Finalidade da NFS-e',
+                    false
+                );
+                self::$dom->addChild(
+                    $IBSCBS,
+                    'indFinal',
+                    $rps->IBSCBS[$d->nItem]->indFinal,
+                    true,
+                    'Indicador de consumidor final',
+                    false
+                );
+                self::$dom->addChild(
+                    $IBSCBS,
+                    'cIndOp',
+                    $rps->IBSCBS[$d->nItem]->cIndOp,
+                    true,
+                    'Código do indicador de operação',
+                    false
+                );
+                self::$dom->addChild(
+                    $IBSCBS,
+                    'indDest',
+                    $rps->IBSCBS[$d->nItem]->indDest,
+                    true,
+                    'Indicador de destino da operação',
+                    false
+                );
+
+                $valores = self::$dom->createElement('valores');
+                $trib = self::$dom->createElement('trib');
+                $gIBSCBS = self::$dom->createElement('gIBSCBS');
+                self::$dom->addChild(
+                    $gIBSCBS,
+                    'CST',
+                    $rps->IBSCBS[$d->nItem]->valores->trib->gIBSCBS->CST,
+                    true,
+                    'Código de Situação Tributária',
+                    false
+                );
+                self::$dom->addChild(
+                    $gIBSCBS,
+                    'cClassTrib',
+                    $rps->IBSCBS[$d->nItem]->valores->trib->gIBSCBS->cClassTrib,
+                    true,
+                    'Código de classificação tributária',
+                    false
+                );
+                self::$dom->appChild($trib, $gIBSCBS, 'Adicionando tag gIBSCBS em trib');
+                self::$dom->appChild($valores, $trib, 'Adicionando tag trib em valores');
+                self::$dom->appChild($IBSCBS, $valores, 'Adicionando tag valores em IBSCBS');
+
+                self::$dom->appChild($det, $IBSCBS, 'Adicionando tag IBSCBS em det');
+            }
+
             //Serviço da NFS-e
             self::$dom->appChild($infRPS, $det, 'Adicionando tag Transportadora em infRPS');
         }

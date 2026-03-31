@@ -35,4 +35,5 @@ class Rps extends RpsBase
     public $total;
     public $ISS;
     public $ISSST;
+    public $IBSCBS;
 }
