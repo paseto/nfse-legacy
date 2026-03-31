@@ -920,6 +920,15 @@ class RenderRPS
                 false
             );
 
+            self::$dom->addChild(
+                $serv,
+                'cNBS',
+                $rps->serv[$d->nItem]->cNBS,
+                false,
+                '',
+                false
+            );
+
             self::$dom->appChild($det, $serv, 'Adicionando tag Endereco do Prestador');
 
             //ISSST

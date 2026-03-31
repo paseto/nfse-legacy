@@ -2,7 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
       xmlns:ds="http://www.w3.org/2000/09/xmldsig#" attributeFormDefault="unqualified"
       elementFormDefault="qualified">
-      <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" 
+      <xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
             schemaLocation="xmldsig-core-schema_v1.01.xsd"/>
 
       <!-- ***********************************************************  -->
@@ -405,7 +405,7 @@
                <!-- Hora da solicitacao -->
               <xs:element name="horaSolicitacao" type="THora" minOccurs="1" maxOccurs="1"/>
               <!-- Conteudo das inutilizacoes -->
-              <xs:element ref="numerosInutilizados" minOccurs="1" maxOccurs="1"/>  
+              <xs:element ref="numerosInutilizados" minOccurs="1" maxOccurs="1"/>
                    <!-- Assinatura digital   -->
               <xs:element ref="ds:Signature" minOccurs="0" maxOccurs="1"/>
               </xs:sequence>
@@ -502,9 +502,9 @@
                   <!-- Dados de tomador da NFSe -->
                   <xs:element ref="TomS"/>
                   <!-- Dados do local de entrega  -->
-                  <xs:element ref="dadosDaObra" minOccurs="0" maxOccurs="1" />  
+                  <xs:element ref="dadosDaObra" minOccurs="0" maxOccurs="1" />
                   <!-- Dados da transportadora  -->
-                  <xs:element ref="transportadora" minOccurs="0" maxOccurs="1" />   
+                  <xs:element ref="transportadora" minOccurs="0" maxOccurs="1" />
                   <!-- Detalhes dos itens de servico da NFSe -->
                   <xs:element ref="det" minOccurs="1"  maxOccurs="999"/>
                   <!-- Dados de totalizacao da NFSe -->
@@ -601,12 +601,12 @@
                   <!-- Fone alternativo -->
                   <xs:element name="fone2" type="TFone" minOccurs="0" maxOccurs="1"/>
                   <!-- Inscricao Estadual  -->
-                  <xs:element name="IE" type="TString15" minOccurs="0" maxOccurs="1"/> 
+                  <xs:element name="IE" type="TString15" minOccurs="0" maxOccurs="1"/>
                   <!-- Regime tributario  -->
                   <xs:element name="regimeTrib" type="TCharInt"/>
               </xs:sequence>
           </xs:complexType>
-      </xs:element> 
+      </xs:element>
 
       <!-- Definicao da estrutura de dados para endereco de um emitente de uma NFSe -->
       <xs:element name="end">
@@ -632,9 +632,9 @@
                   <xs:element name="cPais" type="TcPais" />
                   <!-- Pais  -->
                   <xs:element name="xPais" type="TString100" />
-              </xs:sequence>  
+              </xs:sequence>
           </xs:complexType>
-      </xs:element>   
+      </xs:element>
 
 
       <!-- Definicao da estrutura de dados para tomador de uma NFSe -->
@@ -772,7 +772,7 @@
                   <!-- Ordem sequencial do item na nota  -->
                   <xs:element name="nItem" type="TOrdemSeq"/>
                   <xs:element ref="serv"/>
-                  <xs:element ref="ISSST" minOccurs="0" maxOccurs="1"/>   
+                  <xs:element ref="ISSST" minOccurs="0" maxOccurs="1"/>
               </xs:sequence>
           </xs:complexType>
       </xs:element>
@@ -842,6 +842,7 @@
             <xs:element name="vRetPISPASEP" type="TDec_1302" minOccurs="0" maxOccurs="1"/>
       <!-- Valor total Aproximado de tributos federais -->
             <xs:element name="totalAproxTribServ" type="TDec_1302" minOccurs="0" maxOccurs="1"/>
+                  <xs:element name="cNBS" type="TString60" minOccurs="0" maxOccurs="1"/>
               </xs:sequence>
           </xs:complexType>
       </xs:element>
@@ -946,7 +947,7 @@
                   <!-- Data de vencimento   -->
                   <xs:element name="dVenc" type="TData" minOccurs="0" maxOccurs="1"/>
                   <!-- Valor da fatura  -->
-                  <xs:element name="vFat" type="TDec_1302" />   
+                  <xs:element name="vFat" type="TDec_1302" />
                   <!-- Tipo vencimento fatura  -->
                   <xs:element name="tipoVencFat" type="TCharInt" minOccurs="0" maxOccurs="1"/>
                   <!-- Descrição tipo vencimento fatura  -->
@@ -961,7 +962,7 @@
 
 
       <!-- Tipo para Codigo Postal  -->
-      <xs:simpleType name="TCep"> 
+      <xs:simpleType name="TCep">
   <xs:annotation>
     <xs:documentation>Tipo para Codigo Postal</xs:documentation>
   </xs:annotation>
@@ -1071,7 +1072,7 @@
   <xs:restriction base="xs:string">
           <xs:minLength value="0"/>
     <xs:whiteSpace value="preserve"/>
-      <xs:pattern value="0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?"/>      
+      <xs:pattern value="0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?"/>
   </xs:restriction>
      </xs:simpleType>
 
@@ -1180,7 +1181,7 @@
     <xs:pattern value="[0-9]{0,9}"/>
   </xs:restriction>
       </xs:simpleType>
-            
+
   <!-- Tipo para numeros inteiros   -->
   <xs:simpleType name="TNum">
   <xs:annotation>
@@ -1282,7 +1283,7 @@
     <xs:maxInclusive value="999"/>
         </xs:restriction>
       </xs:simpleType>
- 
+
       <!-- Tipo para situacao de uma NFSe -->
       <xs:simpleType name="TSituacaoNFSe">
   <xs:annotation>
@@ -1451,7 +1452,7 @@
     <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
-  
-  
+
+
 
 </xs:schema>
